@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Silent Hill 2 Fan Site</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .grid-lugares, .grid-personajes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .lugar, .personaje {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+      background-color: #111;
+      padding: 1.5rem;
+      border-left: 4px solid #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .lugar:hover, .personaje:hover {
+  z-index: 1;
+      transform: translateY(-5px);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    }
+
+    .personaje h4::before {
+      content: "\2726 ";
+      color: #fff;
+    }
+
+    .personaje img {
+      width: 100%;
+      max-width: 200px;
+      height: auto;
+      display: block;
+      margin: 0 auto 1rem;
+      border: 2px solid #fff;
+      border-radius: 8px;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .personaje::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    z-index: 0;
+  }
+
+  .personaje * {
+    position: relative;
+    z-index: 1;
+  }
+    .menu {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 0;
+      margin-top: 1rem;
+    }
+
+    .submenu ul {
+      display: none;
+      position: absolute;
+      background: rgba(20, 20, 20, 0.95);
+      list-style: none;
+      padding: 0.5rem;
+      top: 100%;
+      left: 0;
+      border-radius: 5px;
+      min-width: 150px;
+    }
+
+    .submenu:hover ul,
+    .submenu:focus-within ul {
+      display: block;
+    }
+
+    .submenu {
+      position: relative;
+    }
+
+    .submenu ul li {
+      padding: 0.5rem 0;
+    }
+
+    .submenu ul a {
+      display: block;
+      color: #ccc;
+      padding: 0.3rem 0.8rem;
+      text-decoration: none;
+    }
+
+    .submenu ul a:hover {
+      color: #fff;
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+    @media (max-width: 768px) {
+      nav {
+        position: relative;
+      }
+
+      .menu {
+        flex-direction: column;
+        align-items: flex-start;
+        background: #000;
+        padding: 1rem;
+        gap: 1rem;
+      }
+
+      .submenu ul {
+        position: static;
+        padding-left: 1rem;
+        background: none;
+        border: none;
+      }
+    }
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: 2px solid #fff;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      cursor: pointer;
+      margin: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .menu {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        background: #000;
+        padding: 1rem;
+        gap: 1rem;
+      }
+
+      .menu.show {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+    }  
+</style>
+</head>
+<body>
+  <header>
+    <h1>Silent Hill 2</h1>
+    <button class="menu-toggle" onclick="document.querySelector('.menu').classList.toggle('show')">☰ Menú</button>
+    <nav>
+      <ul class="menu">
+        <li><a href="#inicio">Inicio</a></li>
+        <li class="submenu">
+          <a href="#historia">Historia</a>
+          <ul>
+            <li><a href="#personajes">Personajes</a></li>
+            <li><a href="#lugares">Lugares</a></li>
+          </ul>
+        </li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+  <section id="historia">
+    <h2>La Historia</h2>
+    <p>
+      James Sunderland recibe una carta de su esposa Mary… pero ella murió hace tres años. La carta lo invita a volver a Silent Hill, su "lugar especial". Al llegar, encuentra una ciudad envuelta en niebla y oscuridad, poblada por monstruos y figuras misteriosas.
+    </p>
+    <p>
+      Mientras explora, conoce a personajes como Maria, una mujer idéntica a Mary pero con una personalidad muy distinta. También se cruza con otros individuos atormentados, como Angela, Eddie y Laura, cada uno enfrentando sus propios traumas.
+    </p>
+    <p>
+      A medida que James se adentra más en Silent Hill, empieza a enfrentarse a sus propios demonios internos. La ciudad, como en otros juegos de la saga, refleja el estado psicológico de sus visitantes.
+    </p>
+    <p>
+      Al final, James debe enfrentar la verdad: fue él quien mató a Mary por compasión, incapaz de soportar su sufrimiento. El juego presenta varios finales posibles, dependiendo de sus decisiones, pero todos giran en torno al duelo, la culpa y la redención.
+    </p>
+  </section>
+  <section id="personajes">
+    <h3>Personajes Principales</h3>
+    <div class="grid-personajes">
+      <div class="personaje" style="background-image: url('assets/images/bg-james.jpg');">
+  <picture>
+    <source srcset="assets/images/james.jpg.webp" type="image/webp">
+    <img src="assets/images/james.jpg" alt="James Sunderland">
+  </picture>
+        <h4>James Sunderland</h4>
+        <p><strong>Descripción:</strong> Protagonista del juego. Viaja a Silent Hill tras recibir una carta de su esposa fallecida, Mary.<br>
+        <strong>Influencia:</strong> Toda la narrativa gira en torno a su culpa, negación y búsqueda de redención.</p>
+      </div>
+      <div class="personaje" style="background-image: url('assets/images/bg-mary.jpg');">
+<picture>
+<source srcset="assets/images/mary.jpg.webp" type="image/webp">
+  <img src="assets/images/mary.jpg" alt="Mary Shepherd-Sunderland">
+</picture>
+        <h4>Mary Shepherd-Sunderland</h4>
+        <p><strong>Descripción:</strong> Esposa fallecida de James, murió de una enfermedad terminal.<br>
+        <strong>Influencia:</strong> Su carta y memoria desencadenan la historia. Representa la verdad y el conflicto emocional de James.</p>
+      </div>
+      <div class="personaje" style="background-image: url('assets/images/bg-maria.jpg');">
+<picture>
+<source srcset="assets/images/maria.jpg.webp" type="image/webp">
+  <img src="assets/images/maria.jpg" alt="Maria">
+</picture>
+        <h4>Maria</h4>
+        <p><strong>Descripción:</strong> Mujer idéntica a Mary, pero más seductora y confiada.<br>
+        <strong>Influencia:</strong> Representa el deseo reprimido y la culpa de James. Su repetida muerte simboliza su tortura psicológica.</p>
+      </div>
+      <div class="personaje" style="background-image: url('assets/images/bg-laura.jpg');">
+<picture>
+<source srcset="assets/images/laura.jpg.webp" type="image/webp">
+  <img src="assets/images/laura.jpg" alt="Laura">
+</picture>
+        <h4>Laura</h4>
+        <p><strong>Descripción:</strong> Niña huérfana que conoció a Mary en el hospital.<br>
+        <strong>Influencia:</strong> Es la inocencia personificada. No ve monstruos. Su juicio hacia James lo obliga a confrontarse a sí mismo.</p>
+      </div>
+      <div class="personaje" style="background-image: url('assets/images/bg-angela.jpg');">
+<picture>
+<source srcset="assets/images/angela.jpg.webp" type="image/webp">
+  <img src="assets/images/angela.jpg" alt="Angela Orosco">
+</picture>
+        <h4>Angela Orosco</h4>
+        <p><strong>Descripción:</strong> Joven traumatizada por abusos familiares.<br>
+        <strong>Influencia:</strong> Su historia refleja el dolor emocional. Es un espejo de lo que James podría llegar a ser.</p>
+      </div>
+      <div class="personaje" style="background-image: url('assets/images/bg-eddie.jpg');">
+<picture>
+<source srcset="assets/images/eddie.jpg.webp" type="image/webp">
+  <img src="assets/images/eddie.jpg" alt="Eddie Dombrowski">
+</picture>
+        <h4>Eddie Dombrowski</h4>
+        <p><strong>Descripción:</strong> Hombre inestable que comete actos violentos.<br>
+        <strong>Influencia:</strong> Representa el odio reprimido y cómo el dolor puede transformarse en violencia si no se enfrenta.</p>
+      </div>
+      
+    </div>
+  </section>
+<section id="lugares">
+  <h3>Lugares Clave</h3>
+  <div class="grid-lugares">
+    <div class="lugar">
+      <h4>Entrada a Silent Hill (Observation Deck)</h4>
+      <p><strong>Descripción:</strong> Punto donde James inicia su búsqueda.<br>
+      <strong>Significado:</strong> Umbral entre el mundo real y el mundo psicológico de Silent Hill.</p>
+    </div>
+    <div class="lugar">
+      <h4>Wood Side Apartments</h4>
+      <p><strong>Descripción:</strong> Complejo de apartamentos deteriorado.<br>
+      <strong>Significado:</strong> Refleja la mente cerrada, confusa y torturada de James. Primer encuentro con Pyramid Head.</p>
+    </div>
+    <div class="lugar">
+      <h4>Hospital Brookhaven</h4>
+      <p><strong>Descripción:</strong> Hospital donde Mary estuvo internada.<br>
+      <strong>Significado:</strong> Simboliza enfermedad física y mental. Representa dolor y pérdida.</p>
+    </div>
+    <div class="lugar">
+      <h4>Silent Hill Historical Society</h4>
+      <p><strong>Descripción:</strong> Museo conectado con el pasado de la ciudad.<br>
+      <strong>Significado:</strong> Representa el descenso al subconsciente de James y su historia reprimida.</p>
+    </div>
+    <div class="lugar">
+      <h4>Toluca Prison (Labyrinth)</h4>
+      <p><strong>Descripción:</strong> Cárcel y laberinto subterráneo.<br>
+      <strong>Significado:</strong> Simboliza juicio y culpa. Un viaje a las profundidades del trauma de James.</p>
+    </div>
+    <div class="lugar">
+      <h4>Lakeview Hotel</h4>
+      <p><strong>Descripción:</strong> Hotel junto al lago donde James y Mary pasaron sus últimos días felices.<br>
+      <strong>Significado:</strong> Es el lugar donde todo se revela. Refleja memoria, pérdida y verdad.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <h2>Contacto</h2>
+  <p>¿Tienes dudas o comentarios? Escríbeme a: <a href="mailto:Elsebaogamer@gmail.com">Elsebaogamer@gmail.com</a></p>
+</section>
+</main>
